@@ -1,0 +1,370 @@
+:root {
+  --bg-color: #FAF8F5;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --link-color: #999999;
+  --card-bg: #FFFFFF;
+  --card-border: rgba(0, 0, 0, 0.04);
+  --font-mono: 'Space Mono', monospace;
+  --font-cursive: 'Caveat', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: none;
+  /* Hide default cursor */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom Cursor */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.15s ease-out;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  will-change: transform;
+}
+
+#custom-cursor.hovering {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+#custom-cursor svg {
+  margin-bottom: 4px;
+}
+
+.section {
+  padding: 8rem 10%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: var(--text-main);
+  letter-spacing: 0.5px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transform-origin: left center;
+}
+
+.section-title:hover {
+  transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.signature {
+  font-family: var(--font-cursive);
+  font-size: 10rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+  z-index: 10;
+}
+
+.hero-text {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  z-index: 10;
+}
+
+.hero-text .subtitle {
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+/* Decorative floating elements */
+.decor {
+  position: absolute;
+  font-size: 4rem;
+  user-select: none;
+  animation: float 6s ease-in-out infinite;
+  z-index: 1;
+  opacity: 0.9;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+  will-change: transform;
+}
+
+.decor:hover {
+  animation-play-state: paused;
+}
+
+.polaroid {
+  animation-delay: -1s;
+}
+
+.sticky-note {
+  animation-delay: -3s;
+  font-size: 3rem;
+}
+
+.pencil {
+  animation-delay: -4.5s;
+  font-size: 2.5rem;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* About Section */
+.about-content p {
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  max-width: 900px;
+}
+
+.social-links {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: var(--link-color);
+}
+
+.social-links a {
+  display: inline-block;
+  padding: 0 5px;
+  transition: color 0.2s, transform 0.2s;
+  color: inherit;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: var(--text-main);
+  transform: translateY(-2px);
+}
+
+/* Projects Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2rem;
+}
+
+.bento-card {
+  display: block;
+  background: var(--bg-color);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease;
+  transform-origin: center center;
+}
+
+.bento-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+
+.card-image {
+  height: 220px;
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s ease;
+  object-fit: cover;
+  background-color: #eee;
+  display: block;
+  border: 1px solid var(--card-border);
+}
+
+.bento-card:hover .card-image {
+  transform: scale(1.02);
+}
+
+.card-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+}
+
+.card-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.icon-link {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.bento-card:hover .icon-link {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* Cooking Section */
+.cooking-content {
+  font-size: 1.05rem;
+}
+
+.cooking-content p {
+  margin-bottom: 1rem;
+}
+
+/* Fake Multiplayer Cursors */
+.fake-cursor {
+  position: absolute;
+  pointer-events: none;
+  animation: floatCursor 12s infinite alternate ease-in-out;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.cursor-jackie {
+  animation-delay: -3s;
+}
+
+.fake-cursor svg,
+#custom-cursor svg {
+  margin-bottom: 4px;
+}
+
+.fake-cursor .label,
+#custom-cursor .label {
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 12px;
+  font-family: sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.bg-red-label {
+  background-color: #FF6B6B;
+}
+
+.bg-dark-label {
+  background-color: #333333;
+}
+
+@keyframes floatCursor {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-40px, -60px);
+  }
+
+  50% {
+    transform: translate(30px, -100px);
+  }
+
+  75% {
+    transform: translate(50px, -20px);
+  }
+
+  100% {
+    transform: translate(-20px, -40px);
+  }
+}
+
+h2 {
+  transition: color 0.3s ease;
+}
+
+h2:hover {
+  color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .signature {
+    font-size: 6rem;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 4rem 5%;
+  }
+
+  .decor {
+    transform: scale(0.7);
+  }
+}
+
+/* Blur Text Animation */
+.blur-char {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(8px);
+  animation: blurFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes blurFadeIn {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Disable custom cursor on mobile / touch devices */
+@media (pointer: coarse),
+(max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+
+  #custom-cursor {
+    display: none !important;
+  }
+}
