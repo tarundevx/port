@@ -88,6 +88,7 @@ body {
   margin-bottom: 1rem;
   letter-spacing: -2px;
   z-index: 10;
+  position: relative; /* Ensure text remains above images */
 }
 
 .hero-text {
@@ -95,6 +96,7 @@ body {
   color: var(--text-muted);
   max-width: 600px;
   z-index: 10;
+  position: relative;
 }
 
 .hero-text .subtitle {
@@ -331,7 +333,28 @@ h2:hover {
   }
 
   .decor {
-    transform: scale(0.7);
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+
+  .record-player {
+    top: 8% !important;
+    right: -10% !important;
+  }
+
+  .polaroid {
+    top: 15% !important;
+    left: -10% !important;
+  }
+
+  .pencil {
+    bottom: 8% !important;
+    left: -10% !important;
+  }
+
+  .cursor-jackie {
+    top: 85% !important;
+    right: 5% !important;
   }
 }
 
