@@ -65,13 +65,34 @@ if (heroTextEl) {
     const text = p.innerText;
     p.innerHTML = ''; // clear original text
 
-    text.split('').forEach((char, charIndex) => {
-      const span = document.createElement('span');
-      span.innerText = char === ' ' ? '\u00A0' : char;
-      span.classList.add('blur-char');
-      // Delay factors: 0.2s base delay + 0.015s per character
-      span.style.animationDelay = `${0.2 + (pIndex * 0.15) + (charIndex * 0.015)}s`;
-      p.appendChild(span);
+    const words = text.split(' ');
+    let globalCharIndex = 0;
+
+    words.forEach((word, wordIndex) => {
+      const wordSpan = document.createElement('span');
+      wordSpan.style.display = 'inline-block';
+      wordSpan.style.whiteSpace = 'nowrap';
+      
+      word.split('').forEach((char) => {
+        const span = document.createElement('span');
+        span.innerText = char;
+        span.classList.add('blur-char');
+        // Delay factors: 0.2s base delay + 0.015s per character
+        span.style.animationDelay = `${0.2 + (pIndex * 0.15) + (globalCharIndex * 0.015)}s`;
+        wordSpan.appendChild(span);
+        globalCharIndex++;
+      });
+      
+      p.appendChild(wordSpan);
+
+      if (wordIndex < words.length - 1) {
+        const spaceSpan = document.createElement('span');
+        spaceSpan.innerText = '\u00A0';
+        spaceSpan.classList.add('blur-char');
+        spaceSpan.style.animationDelay = `${0.2 + (pIndex * 0.15) + (globalCharIndex * 0.015)}s`;
+        p.appendChild(spaceSpan);
+        globalCharIndex++;
+      }
     });
   });
 }
